@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h2{
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .converter {
+            background-color: #333;
+            padding: 20px;
+            padding-left:30px;
+            margin-left:20px;
+            color:white;
+            border-radius: 8px;
+            width:40%;
+            height: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            color:white;
+            background-color: #333;
+        }
+        #fromCurrency{
+            background-color: #333;
+            color:white;
+            padding-left:5%;
+
+        }
+        #toCurrency{
+            background-color: #333;
+            color:white;
+            padding-left:5%;
+        }
+        .cvt{
+            margin-left:25%;
+        }
+        button {
+            background-color: #14cbf8;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            margin-left:38%;
+            height:40px;
+            width: 100px;
+        }
+    </style>
+    <title>Currency Converter</title>
+</head>
+<body>
+    <div class="converter">
+        <h2>Currency Converter</h2><br><br>
+        <label for="amount">Amount:</label><br><br>
+        <input type="number" id="amount" placeholder="Enter amount" step="any">
+        <br><br><br>
+        <div class="cvt">
+        <label for="fromCurrency">From:</label>
+        <select id="fromCurrency">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+           
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="toCurrency">To:</label>
+        <select id="toCurrency">
+            <option value="usd">USD</option>
+            <option value="eur">EUR</option>
+            
+        </select>
+        <br><br><br>
+        </div>
+
+        <button onclick="convertCurrency()">Convert</button>
+<br><br>
+        <h3>Converted Amount: <span id="convertedAmount"></span></h3>
+    </div>
+
+    <script>
+        function convertCurrency() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const fromCurrency = document.getElementById('fromCurrency').value;
+            const toCurrency = document.getElementById('toCurrency').value;
+
+            const conversionRate = 1.2;  
+
+            const convertedAmount = amount * conversionRate;
+            
+            document.getElementById('convertedAmount').innerText = convertedAmount.toFixed(2) + ' ' + toCurrency;
+        }
+    </script>
+</body>
+</html>
